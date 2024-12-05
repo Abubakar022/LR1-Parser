@@ -73,7 +73,6 @@ const prepareFlowData = (states) => {
     return { nodes, edges };
 };
 
-
 export default function LR1App() {
   const [input, setInput] = useState('');
   const [tableData, setTableData] = useState(null);
@@ -82,7 +81,6 @@ export default function LR1App() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [activeTab, setActiveTab] = useState('diagram');
-
 
   const handleParse = async () => {
     try {
@@ -216,9 +214,18 @@ export default function LR1App() {
                 {error}
               </div>
             )}
+            {input.trim() === '' && (
+              <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600">
+                Write Some Production Rules to view the Parser!
+              </div>
+            )}
           </div>
         </div>
       </main>
+
+      <footer className="w-full bg-blue-600 text-white py-4 text-center text-sm">
+        <p>Developed with ❤ by Abu Bakar</p>
+      </footer>
     </div>
   );
 }
